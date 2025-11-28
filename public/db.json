@@ -1,0 +1,69 @@
+{
+  "items": [
+    {
+      "id": 1,
+      "title": "Thalapathy Kacheri",
+      "singer": "Vijay,Arivu",
+      "genre": "Vibe",
+      "imgUrl": "Images/jana-nayagan.webp",
+      "songUrl": "Songs/Thalapathy Kacheri.mp3"
+    },
+    {
+      "id": 2,
+      "title": "Beer Song",
+      "singer": "Gana Guna",
+      "genre": "Romantic",
+      "imgUrl": "Images/diesel.webp",
+      "songUrl": "Songs/Beer Song.mp3"
+    },
+    {
+      "id": 3,
+      "title": "Oorum Blood",
+      "singer": "Sai Abhyankkar",
+      "genre": "Vibe",
+      "imgUrl": "Images/dude.webp",
+      "songUrl": "Songs/Oorum Blood.mp3"
+    },
+    {
+      "id": 4,
+      "title": "Ethana Saami",
+      "singer": "Pushpavanam Kupp..",
+      "genre": "Emotional",
+      "imgUrl": "Images/idli-kadai.webp",
+      "songUrl": "Songs/Ethana Saami.mp3"
+    },
+    {
+      "id": 5,
+      "title": "Salambala",
+      "singer": "Ankit Tiwari",
+      "genre": "Vibe",
+      "imgUrl": "Images/madharaasi.webp",
+      "songUrl": "Songs/Salambala.mp3"
+    },
+    {
+      "id": 6,
+      "title": "Pookal pookum",
+      "singer": "Gv Prakash",
+      "genre": "Love",
+      "imgUrl": "Images/pookal pookum.webp",
+      "songUrl": "Songs/Pookal Pookum.mp3"
+    },
+    {
+      "id": 7,
+      "title": "Maane Maane",
+      "singer": "Anthony Dasan",
+      "genre": "Love Song",
+      "imgUrl": "Images/uriyadi.webp",
+      "songUrl": "Songs/Maane-Maane.mp3"
+    },
+    {
+      "id": 8,
+      "title": "Pottala Muttaye",
+      "singer": "Santhosh Narayanan",
+      "genre": "Love Song",
+      "imgUrl": "Images/thalaivan-thalaivii.webp",
+      "songUrl": "Songs/Pottala Muttaye.mp3"
+    }
+    
+  ]
+}
