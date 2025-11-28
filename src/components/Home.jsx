@@ -14,7 +14,7 @@ export default function Home() {
     useEffect(() => {
         async function fecthSongs() {
             try {
-                const res = await fetch('/db.json')
+                const res = await fetch('./db.json')
                 if (!res.ok) {
                     console.log("Error", res.status)
                 }

@@ -1,4 +1,4 @@
-import { HashRouter, Route, Router, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Router, Routes } from 'react-router-dom';
 import './App.css';
 import Home from './components/Home';
 import PlayList from './components/PlayList';
@@ -11,15 +11,15 @@ function App() {
   return (
     <FavoritesProvider>
       <PlaylistProvider>
-        <HashRouter>
+        <BrowserRouter>
           <div>
             <Routes>
-              <Route path='/' element={<Home />} />
+              <Route path='/My-Music/' element={<Home />} />
               <Route path='/playlist' element={<PlayList />} />
               <Route path='/favorite' element={<Favorite />} />
             </Routes>
           </div>
-        </HashRouter>
+        </BrowserRouter>
       </PlaylistProvider>
     </FavoritesProvider>
   );
