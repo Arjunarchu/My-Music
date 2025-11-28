@@ -14,9 +14,9 @@ function App() {
         <BrowserRouter>
           <div>
             <Routes>
-              <Route path='/My-Music/' element={<Home />} />
-              <Route path='/My-Music/playlist' element={<PlayList />} />
-              <Route path='/My-Music/favorite' element={<Favorite />} />
+              <Route path='/' element={<Home />} />
+              <Route path='/playlist' element={<PlayList />} />
+              <Route path='/favorite' element={<Favorite />} />
             </Routes>
           </div>
         </BrowserRouter>
