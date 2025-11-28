@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Router, Routes } from 'react-router-dom';
+import { HashRouter, Route, Router, Routes } from 'react-router-dom';
 import './App.css';
 import Home from './components/Home';
 import PlayList from './components/PlayList';
@@ -11,7 +11,7 @@ function App() {
   return (
     <FavoritesProvider>
       <PlaylistProvider>
-        <BrowserRouter>
+        <HashRouter>
           <div>
             <Routes>
               <Route path='/' element={<Home />} />
@@ -19,7 +19,7 @@ function App() {
               <Route path='/favorite' element={<Favorite />} />
             </Routes>
           </div>
-        </BrowserRouter>
+        </HashRouter>
       </PlaylistProvider>
     </FavoritesProvider>
   );
