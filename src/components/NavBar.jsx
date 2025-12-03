@@ -12,7 +12,12 @@ export default function NavBar() {
             {/* Top bar for mobile */}
             <nav className="bg-gray-900 text-white w-full md:hidden border-b border-gray-800">
                 <div className="px-4 py-3 flex items-center justify-between">
-                    <div className="text-lg font-bold tracking-wide">Rythm Music</div>
+                    <div className="flex items-center gap-2">
+                        <div className="w-8 h-8">
+                            <img src="/icon.jpg" />
+                        </div>
+                        <div className="text-lg font-bold tracking-wide">Rythm Music</div>
+                    </div>
                     <button
                         onClick={() => setIsOpen((prev) => !prev)}
                         className="p-2 rounded-md border border-gray-700 hover:bg-gray-800"
@@ -46,8 +51,13 @@ export default function NavBar() {
                     </div>
 
                     {/* Desktop title */}
-                    <div className="hidden md:block text-xl font-bold tracking-wide mb-6">
-                        Rythm Music
+                    <div className="flex gap-2">
+                        <div className="w-8 h-8">
+                            <img src="/icon.jpg" />
+                        </div>
+                        <div className="hidden md:block text-xl font-bold tracking-wide mb-6">
+                            Rythm Music
+                        </div>
                     </div>
 
                     <ul className="flex flex-col gap-4 text-sm sm:text-base mt-2">
