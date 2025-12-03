@@ -1,6 +1,7 @@
 import { FaRegHeart, FaHeart } from "react-icons/fa";
 import { useFavorites } from "./FavoriteContext";
 import NavBar from "./NavBar";
+import HeartButton from "./HeartButton";
 
 export default function Favorites() {
     const { favorites } = useFavorites();
@@ -25,13 +26,7 @@ export default function Favorites() {
                                     </div>
                                     <div className="flex items-start w-full justify-between gap-2">
                                         <h3 className="text-sm sm:text-base font-semibold flex-1">{song.title}</h3>
-                                        <button>
-                                            {isFavorite ? (
-                                                <FaHeart className="text-red-500" />
-                                            ) : (
-                                                <FaRegHeart />
-                                            )}
-                                        </button>
+                                        <HeartButton song={song}/>
                                     </div>
                                     <div className="flex flex-col items-start w-full mt-2">
                                         <p className="text-sm text-gray-300">Singer: {song.singer}</p>
@@ -43,6 +38,14 @@ export default function Favorites() {
                                         controls
                                         src={song.songUrl}
                                         className="mt-3 rounded-lg w-full mb-3 h-8"
+                                        onPlay={(e) => {
+                                            const audios = document.querySelectorAll("audio");
+                                            audios.forEach((audio) => {
+                                                if (audio !== e.target) {
+                                                    audio.pause();
+                                                }
+                                            });
+                                        }}
                                     ></audio>
                                 </div>
                             );

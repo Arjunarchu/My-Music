@@ -16,13 +16,26 @@ export default function Playlist() {
         {playlist && playlist.songs.length > 0 ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
             {playlist.songs.map((song) => (
-              <div key={song.id} className="p-4 bg-white/10 rounded-2xl shadow-lg">
+              <div key={song.id} className="p-4 bg-white/10 rounded-2xl shadow-lg flex flex-col justify-center items-center">
+                <div className="w-32 h-32 sm:w-40 sm:h-40 mb-3">
                 <img src={song.imgUrl} alt={song.title} className="w-full h-40 object-cover rounded-lg" />
+                </div>
                 <h3 className="mt-3 font-semibold text-sm sm:text-base">{song.title}</h3>
                 <p className="text-sm text-gray-300">{song.singer}</p>
-                <audio controls src={song.songUrl} className="w-full mt-3 h-8 rounded-lg"></audio>
+                <audio 
+                controls src={song.songUrl}
+                className="w-full mt-3 h-8 rounded-lg"
+                onPlay={(e) => {
+                  const audios = document.querySelectorAll("audio");
+                  audios.forEach((audio) => {
+                    if (audio !== e.target) {
+                      audio.pause();
+                    }
+                  });
+                }}
+                ></audio>
                 <button
-                  onClick={() => removeSongFromPlaylist("My Playlist", song.id)}
+                  onClick={() => removeSongFromPlaylist("My Playlist", song.id,song.title)}
                   className="mt-3 bg-red-600 text-white px-3 py-1 rounded-lg hover:bg-red-700 text-sm font-medium"
                 >
                   Remove

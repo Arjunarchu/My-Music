@@ -5,6 +5,7 @@ import PlayList from './components/PlayList';
 import Favorite from './components/Favorite';
 import { FavoritesProvider } from './components/FavoriteContext';
 import { PlaylistProvider } from './components/PlaylistContext';
+import {ToastContainer} from 'react-toastify';
 
 
 function App() {
@@ -14,12 +15,13 @@ function App() {
         <BrowserRouter>
           <div>
             <Routes>
-              <Route path='/My-Music/' element={<Home />} />
+              <Route path='/' element={<Home />} />
               <Route path='/playlist' element={<PlayList />} />
               <Route path='/favorite' element={<Favorite />} />
             </Routes>
           </div>
         </BrowserRouter>
+        <ToastContainer />
       </PlaylistProvider>
     </FavoritesProvider>
   );

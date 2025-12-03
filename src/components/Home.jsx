@@ -4,17 +4,18 @@ import NavBar from "./NavBar";
 import { FaRegHeart, FaHeart } from "react-icons/fa";
 import { useFavorites } from "./FavoriteContext";
 import { usePlaylists } from "./PlaylistContext";
+import HeartButton from "./HeartButton";
 
 export default function Home() {
     const [songs, setSongs] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [search, setSearch] = useState('');
-    const { favorites, toggleFavorite } = useFavorites()
+    const { favorites, addToFavorites } = useFavorites()
     useEffect(() => {
         async function fecthSongs() {
             try {
-                const res = await fetch('./db.json')
+                const res = await fetch('/db.json')
                 if (!res.ok) {
                     console.log("Error", res.status)
                 }
@@ -60,7 +61,7 @@ export default function Home() {
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                     {filteredSongs.length > 0 ? (
                         filteredSongs.map((song) => {
-                            const isFavorite = favorites.some((fav) => fav.id === song.id);
+                            
                             return (
                                 <div
                                     key={song.id}
@@ -78,13 +79,7 @@ export default function Home() {
                                         <h3 className="text-sm sm:text-base font-semibold flex-1">
                                             {song.title}
                                         </h3>
-                                        <button onClick={() => toggleFavorite(song)} className="cursor-pointer">
-                                            {isFavorite ? (
-                                                <FaHeart className="text-red-500" />
-                                            ) : (
-                                                <FaRegHeart />
-                                            )}
-                                        </button>
+                                        <HeartButton song={song}/>
                                     </div>
 
                                     <div className="flex flex-col items-start w-full mt-2">
@@ -98,8 +93,15 @@ export default function Home() {
                                         controls
                                         src={song.songUrl}
                                         className="mt-3 rounded-lg w-full mb-3 h-8"
+                                        onPlay={(e) => {
+                                            const audios = document.querySelectorAll("audio");
+                                            audios.forEach((audio) => {
+                                                if (audio !== e.target) {
+                                                     audio.pause();
+                                                    }
+                                                });
+                                        }}
                                     ></audio>
-
                                     <button
                                         className="bg-gray-200 text-gray-900 px-4 py-2 rounded-2xl cursor-pointer text-sm font-medium hover:bg-gray-300 transition"
                                         onClick={() => addSongToPlaylist("My Playlist", song)}

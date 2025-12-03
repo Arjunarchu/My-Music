@@ -1,5 +1,5 @@
-// src/PlaylistContext.js
 import { createContext, useContext, useState } from "react";
+import {toast} from 'react-toastify';
 
 const PlaylistContext = createContext();
 export const usePlaylists = () => useContext(PlaylistContext);
@@ -12,26 +12,28 @@ export const PlaylistProvider = ({ children }) => {
   const addSongToPlaylist = (playlistName, song) => {
     console.log(playlistName);
     setPlaylists((prev) =>
-      prev.map((p) =>
-        p.name === playlistName
-          ? {
-              ...p,
-              songs: p.songs.some((s) => s.id === song.id)
-                ? p.songs // avoid duplicates
-                : [...p.songs, song],
-            }
-          : p
-      )
+      prev.map((p) => {
+        if (p.name === playlistName) {
+          if (p.songs.some((s) => s.id === song.id)) {
+            toast.warn(`${song.title} song already in Playlist`)
+            return p;
+          }
+          toast.success(`${song.title} song added to playlist`);
+          return { ...p, songs: [...p.songs, song] }
+        }
+      })
     );
   };
 
-  const removeSongFromPlaylist = (playlistName, songId) => {
+  const removeSongFromPlaylist = (playlistName, songId,songName) => {
     setPlaylists((prev) =>
-      prev.map((p) =>
-        p.name === playlistName
-          ? { ...p, songs: p.songs.filter((s) => s.id !== songId) }
-          : p
-      )
+      prev.map((p) =>{
+        if(p.name === playlistName){
+          toast.error(`Removed ${songName} song from playlist`);
+          return{...p, songs : p.songs.filter((s) => s.id !== songId)}
+        }
+        return p;
+      })
     );
   };
 

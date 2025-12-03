@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { FaHeart, FaHome, FaList } from "react-icons/fa";
-import './NavBar.css'
 import { Link } from "react-router-dom";
 
 export default function NavBar() {
